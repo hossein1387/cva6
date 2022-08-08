@@ -1062,8 +1062,8 @@ module decoder import ariane_pkg::*; (
                 instruction_o.fu  = ACCEL;
                 instruction_o.vfp = is_vfp;
                 instruction_o.rs1 = (is_rs1 || is_fs1) ? instr.rtype.rs1 : {REG_ADDR_SIZE{1'b0}};
-                instruction_o.rs2 = is_rs2 ? instr.rtype.rs2 : {REG_ADDR_SIZE{1'b0}};
-                instruction_o.rd  = is_rd ? instr.rtype.rd : {REG_ADDR_SIZE{1'b0}};
+                instruction_o.rs2 = (is_rs2 || is_fs2) ? instr.rtype.rs2 : {REG_ADDR_SIZE{1'b0}};
+                instruction_o.rd  = (is_rd || is_fd) ? instr.rtype.rd : {REG_ADDR_SIZE{1'b0}};
 
                 // Decode the vector operation
                 unique case ({is_store, is_load, is_fs1, is_fs2, is_fd})
