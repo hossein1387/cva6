@@ -13,7 +13,7 @@
 //
 // This file defines the interfaces we support.
 
-
+`ifndef SPYGLASS
 
 /// An AXI4 interface.
 interface AXI_BUS #(
@@ -101,7 +101,6 @@ interface AXI_BUS #(
   );
 
 endinterface
-
 
 /// An asynchronous AXI4 interface.
 interface AXI_BUS_ASYNC
@@ -258,6 +257,7 @@ interface AXI_LITE #(
 
 endinterface
 
+`endif
 
 /// An AXI routing table.
 ///
